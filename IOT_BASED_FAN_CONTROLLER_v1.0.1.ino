@@ -39,9 +39,9 @@ int lcdBtn = d7; // this is the pin connenected to the button to go to the next 
 int fanBtn = d6; // this is the pin connected to the butoon to turn on and off the fan onsite.
 
 // initializing the lcd screen number(lcdNumber) and its alt variable
-// these variables are used to change the content 
-// on the lcd to the next screen depending on the lcdNumbner. 
-int lcdNumber = 1; 
+// these variables are used to change the content
+// on the lcd to the next screen depending on the lcdNumbner.
+int lcdNumber = 1;
 int altLcdNumber = 0;
 
 // initailizing string variables with initail values, which will
@@ -99,35 +99,35 @@ void setup() { // put your code here to run once:
   lcd.clear();
   lcd.print("   STARTING...");
   delay(1500);
-  
+
   Serial.begin(115200);
   WiFi.softAP(ssid, passcode);
   WiFi.softAPConfig(local_ip, gateway, subnet);
   delay(100);
-  
-  // setting the route and function to be 
+
+  // setting the route and function to be
   // called to run upon  the /" request.
   server.on("/", handle_onconnect);
-  
-  // setting the route and function to be 
+
+  // setting the route and function to be
   // called to run upon the "/onfan" request.
   server.on("/onfan", OnFan);
 
-  // setting the route and function to be 
+  // setting the route and function to be
   // called to run upon the "/offfan" request.
   server.on("/offfan", OffFan);
 
-  // setting the route and function to be 
+  // setting the route and function to be
   // called to run upon the "/getdata" request.
   server.on("/getdata", SendData);
 
-  // setting the route and function to be 
+  // setting the route and function to be
   // called to run upon the "/handle_notfound" request.
   server.onNotFound(handle_notfound);
 
   // stating the server.
   server.begin();
-  
+
   Serial.println("HTTP WEB SERVER HAS STARTED");
   Serial.print("SSID:\t");
   Serial.println(ssid);
